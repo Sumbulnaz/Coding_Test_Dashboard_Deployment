@@ -66,9 +66,8 @@ def update_graph(selected_year,gross_income,genre_name):
         genre_name_select = genre_name
     filtered_final = filtered_df2.loc[filtered_df2['genre'].str.contains(genre_name_select)]
     scatter_fig = px.scatter(filtered_final,
-                       x='imdb_scaled', y='tomatometer_rating',hover_name='original_title',
+                       x='imdb_scaled', y='worldwide_gross_income',hover_name='original_title',
                        hover_data=['genre','worldwide_gross_income','year'],
-                       range_x = [0,100],range_y=[-10,110],
                        title=f'Rating comparison - years selected {selected_year} - box office range {gross_income} - genre {genre_name}')
     return scatter_fig
 
