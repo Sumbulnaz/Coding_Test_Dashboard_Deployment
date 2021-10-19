@@ -17,3 +17,15 @@ list_genre_groupby = list_genre_explode.groupby('genre_list').size().reset_index
 
 # final genre lis
 genre = list(list_genre_groupby['genre_list'].unique()) + ['All Genre']
+
+
+#for rating
+def custom_dashboard(score):
+  if score >=80:
+    return 'Popular'
+  elif score>=50 and score <80:
+    return 'Average'
+  else:
+    return 'low-rated'
+dashboard_data['rating'] =dashboard_data.apply(lambda x: custom_dashboard(x['imdb_scaled']),axis=1)
+rating_list = list(dashboard_data['rating'].unique()) + ['All movies']
